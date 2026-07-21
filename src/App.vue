@@ -269,7 +269,7 @@ const allSelected = computed(
       <a :href="EXTENSION_URL" target="_blank" rel="noopener noreferrer"
         >Official Chrome Extension Link (Chromebook Recovery Utility)</a
       >
-      <a :href="EXTENSION_WINDOW_URL">Open Chrome Extension Window (If already added to your browser)</a>
+      <a :href="EXTENSION_WINDOW_URL">Open Chrome Extension Window (If installed in your browser)</a>
       <p>By
       <a :href="DEV_URL">Mastered YT Aditya</a>.</p>
       <a :href="REPO_URL"
