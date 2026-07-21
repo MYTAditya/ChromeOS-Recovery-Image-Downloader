@@ -53,7 +53,7 @@ Deno.serve(async (req: Request) => {
       return true;
     });
 
-    return new Response(JSON.stringify({ entries: deduped, errors }), {
+    return new Response(JSON.stringify({ records: deduped, errors }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
