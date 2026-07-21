@@ -271,9 +271,7 @@ const allSelected = computed(
       >
       <a :href="EXTENSION_WINDOW_URL">Open Chrome Extension Window (If already added to your browser)</a>
       <p>By
-      <a :href="DEV_URL">Mastered YT Aditya</a>
-      .
-      </p>
+      <a :href="DEV_URL">Mastered YT Aditya</a>.</p>
       <a :href="REPO_URL"
         ><img :src="GITHUB_BUTTON" alt="source" width="250" 
         /></a>
@@ -290,7 +288,7 @@ const allSelected = computed(
   font-weight: 700;
   margin: 0 0 0.5rem;
   letter-spacing: -0.02em;
-  color: #e6edf3;
+  color: #a9e43a;
 }
 .subtitle {
   margin: 0;
