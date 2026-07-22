@@ -1,7 +1,7 @@
 # ChromeOS Recovery Image Downloader
 
 ![](https://img.shields.io/github/created-at/MYTAditya/ChromeOS-Recovery-Image-Downloader?color=561BC5&style=for-the-badge&logo=GitHub)
-![](https://img.shields.io/github/v/release/MYTAditya/ChromeOS-Recovery-Image-Downloader?color=a9e43a&style=for-the-badge&logo=GitHub)
+![](https://img.shields.io/github/v/release/MYTAditya/ChromeOS-Recovery-Image-Downloader?color=a9e43a&style=for-the-badge)
 ![](https://img.shields.io/github/license/MYTAditya/ChromeOS-Recovery-Image-Downloader?style=for-the-badge&logo=GitHub&color=1BA0D7)
 ![](https://img.shields.io/github/languages/top/MYTAditya/ChromeOS-Recovery-Image-Downloader?style=for-the-badge&color=4FC08D&logo=vuedotjs&logoColor=white)
 ![](https://img.shields.io/github/stars/MYTAditya/ChromeOS-Recovery-Image-Downloader?style=for-the-badge&logo=GitHub&color=01c45b)
