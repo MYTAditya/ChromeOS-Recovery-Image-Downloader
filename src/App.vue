@@ -226,20 +226,21 @@ const allSelected = computed(
             >
           </div>
           <div class="info-box">
-            <span class="info-label">Version</span>
-            <span class="info-value">{{ selectedRecord.version }}</span>
-          </div>
-          <div class="info-box">
-            <span class="info-label">Chrome OS Version</span>
-            <span class="info-value">{{
-              selectedRecord.chrome_version
-            }}</span>
+            <span class="info-label">Version &amp; ChromeOS Version</span>
+            <span class="info-value"
+              >{{ selectedRecord.version }} |
+              {{ selectedRecord.chrome_version }}</span
+            >
           </div>
           <div class="info-box">
             <span class="info-label">File Size</span>
             <span class="info-value">{{
               formatBytesToGB(selectedRecord.zipfilesize)
             }}</span>
+          </div>
+          <div class="info-box">
+            <span class="info-label">SHA-1</span>
+            <span class="info-value sha1-value" :title="selectedRecord.sha1">{{ selectedRecord.sha1 || '—' }}</span>
           </div>
           <div class="info-box">
             <span class="info-label">Link</span>
