@@ -207,7 +207,7 @@ const allSelected = computed(
     </section>
 
     <p class="hint" v-if="!allSelected">
-      Choose a channel, manufacturer, and model to reveal the recovery image
+      Choose a channel, manufacturer, and model to view the recovery image
       details.
     </p>
 
