@@ -1,12 +1,8 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 
-const API_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/recovery-catalog`
-const API_HEADERS = {
-  Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-  'Content-Type': 'application/json',
-}
-
+const API_URL = `/api/recovery-catalog.ts`
+  
 const loading = ref(true)
 const loadError = ref('')
 const records = ref([])
