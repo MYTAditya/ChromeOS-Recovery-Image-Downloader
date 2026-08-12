@@ -1,0 +1,85 @@
+name: Build and deploy to GitHub Pages
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 0 * * *' 
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate recovery catalog
+        run: |
+          set -euo pipefail
+          echo "Fetching recovery JSON sources..."
+          SOURCES=(
+            "https://dl.google.com/dl/edgedl/chromeos/recovery/recovery2.json"
+            "https://dl.google.com/dl/edgedl/chromeos/recovery/cloudready_recovery2.json"
+          )
+          mkdir -p tmp
+          i=0
+          for url in "${SOURCES[@]}"; do
+            i=$((i+1))
+            echo "Fetching $url"
+            if curl -fsSL -A "ChromeOS-Recovery-Image-Downloader" "$url" -o "tmp/recovery_${i}.json"; then
+              echo "Saved tmp/recovery_${i}.json"
+            else
+              echo "Warning: failed to fetch $url" >&2
+            fi
+          done
+          
+          node - <<'NODE'
+          const fs = require('fs');
+          const files = ['tmp/recovery_1.json', 'tmp/recovery_2.json'].filter(p => fs.existsSync(p));
+          const load = p => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch (e) { return []; } };
+          const arrays = files.map(load);
+          const combined = [].concat(...arrays).filter(Boolean);
+          const seen = new Set();
+          const out = combined.filter(e => {
+            if (!e || !e.channel || !e.manufacturer || !e.model) return false;
+            const key = `${e.channel}|${e.manufacturer}|${e.model}|${e.version ?? ''}|${e.url ?? ''}`;
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+          });
+          fs.mkdirSync('public', { recursive: true });
+          fs.writeFileSync('public/recovery-catalog.json', JSON.stringify({ records: out }, null, 2));
+          console.log('Wrote public/recovery-catalog.json with', out.length, 'records');
+          NODE
+
+      - name: Build
+        run: |
+          OWNER=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f1)
+          REPO=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f2)
+          if [ "$REPO" = "$OWNER.github.io" ]; then
+            BASE="/"
+          else
+            BASE="/${REPO}/"
+          fi
+          echo "Building with base: $BASE"
+          npm run build -- --base "$BASE"
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
+          token: ${{ secrets.GITHUB_TOKEN }}
