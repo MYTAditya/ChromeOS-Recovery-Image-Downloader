@@ -34,7 +34,7 @@ async function loadData() {
   loading.value = true
   loadError.value = ''
   try {
-    const res = await fetch(API_URL, { headers: API_HEADERS })
+    const res = await fetch(API_URL)
     if (!res.ok) {
       let msg = `Request failed (${res.status})`
       try {
