@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 
-const API = `/api/recovery-catalog.ts`
+const API = `${import.meta.env.BASE_URL}catalog/recovery-catalog.json`
   
 const loading = ref(true)
 const loadError = ref('')
@@ -34,16 +34,9 @@ async function loadData() {
   loading.value = true
   loadError.value = ''
   try {
-    const res = await fetch(API)
+    const res = await fetch(`${API}?t=${Date.now()}`, { cache: 'no-store' })
     if (!res.ok) {
-      let msg = `Request failed (${res.status})`
-      try {
-        const body = await res.json()
-        if (body?.error) msg = body.error
-      } catch {
-        /* ignore */
-      }
-      throw new Error(msg)
+      throw new Error(`Request failed (${res.status})`)
     }
     const body = await res.json()
     if (!body?.records || !Array.isArray(body.records) || body.records.length === 0) {
