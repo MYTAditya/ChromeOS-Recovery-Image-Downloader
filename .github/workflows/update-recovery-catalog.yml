@@ -36,5 +36,4 @@ jobs:
           body: Automated update of the ChromeOS recovery catalog.
           branch: bot/update-recovery-catalog
           delete-branch: true
-          add-paths: |
-            catalog/recovery-catalog.json
+          add-paths: public/catalog/recovery-catalog.json
