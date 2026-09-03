@@ -9,7 +9,7 @@ const SOURCES = [
 ];
 
 const OUTPUT_PATHS = [
-  path.resolve('public/catalog/recovery-catalog.json'),
+  path.resolve('public/catalog/recovery-catalog.json')
 ];
 
 async function fetchSource(url) {
@@ -58,7 +58,11 @@ async function main() {
     process.exit(1);
   }
   
-  const json = `${JSON.stringify(deduped, null, 2)}\n`;
+  const payload = {
+    records: deduped
+  };
+  
+  const json = `${JSON.stringify(payload, null, 2)}\n`;
 
   for (const outputPath of OUTPUT_PATHS) {
     await mkdir(path.dirname(outputPath), { recursive: true });
