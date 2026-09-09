@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '20'
       - name: Generate catalog
-        run: node scripts/generate-recovery-catalog.mjs
+        run: node generate-recovery-catalog.mjs
       - name: Open PR if changed
         uses: peter-evans/create-pull-request@v6
         with:
