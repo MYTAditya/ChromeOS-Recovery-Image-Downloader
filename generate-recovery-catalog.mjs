@@ -9,7 +9,7 @@ const SOURCES = [
 ];
 
 const OUTPUT_PATHS = [
-  path.resolve('public/catalog/recovery-catalog.json')
+  path.resolve('public/recovery-catalog.json')
 ];
 
 async function fetchSource(url) {

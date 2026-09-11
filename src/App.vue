@@ -1,7 +1,8 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
+import { Icon } from '@iconify/vue'
 
-const API = `${import.meta.env.BASE_URL}catalog/recovery-catalog.json`
+const API = `${import.meta.env.BASE_URL}recovery-catalog.json`
   
 const loading = ref(true)
 const loadError = ref('')
@@ -135,7 +136,10 @@ const allSelected = computed(
 
 <template>
   <header class="app-header">
-    <h1>ChromeOS Recovery Image Downloader</h1>
+    <h1>
+      <Icon icon="logos:chrome" width="28" height="28" style="vertical-align: -6px; margin-right: 0.5rem;" />
+      ChromeOS Recovery Image Downloader
+    </h1>
     <p class="subtitle">
       Browse and download official ChromeOS recovery images.
     </p>
@@ -244,6 +248,7 @@ const allSelected = computed(
           download
           rel="noopener noreferrer"
         >
+          <Icon icon="mdi:download" width="20" height="20" style="vertical-align: -4px; margin-right: 0.4rem;" />
           Download Recovery Image
         </a>
       </section>
@@ -316,7 +321,7 @@ const allSelected = computed(
   color: #0d1117;
 }
 .retry-btn:hover {
-  background: #8bc928;
+  background: #01c45b;
 }
 
 .selectors {
@@ -441,7 +446,7 @@ const allSelected = computed(
   margin-bottom: 1.5rem;
 }
 .download-btn:hover {
-  background: #8bc928;
+  background: #01c45b;
   text-decoration: none;
 }
 .download-btn:active {
