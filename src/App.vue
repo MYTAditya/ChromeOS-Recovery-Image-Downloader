@@ -264,7 +264,7 @@ const allSelected = computed(
       <p>By
       <a :href="DEV_URL">Mastered YT Aditya</a>.</p>
       <a :href="REPO_URL"
-        ><img :src="GITHUB_BUTTON" alt="source" width="250" 
+        ><img :src="GITHUB_BUTTON" alt="GitHub Badge" width="250" 
         /></a>
     </div>
   </footer>
