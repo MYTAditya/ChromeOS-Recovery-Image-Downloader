@@ -137,7 +137,7 @@ const allSelected = computed(
 <template>
   <header class="app-header">
     <h1>
-      <Icon icon="simple-icons:googlechrome" width="28" height="28" style="color: #a9e43a; vertical-align: -6px; margin-right: 0.5rem;" />
+      <Icon icon="simple-icons:googlechrome" width="32" height="32" class="chrome-icon" />
       ChromeOS Recovery Image Downloader
     </h1>
     <p class="subtitle">
@@ -280,11 +280,18 @@ const allSelected = computed(
   margin-bottom: 2.5rem;
 }
 .app-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   font-weight: 700;
   margin: 0 0 0.5rem;
   letter-spacing: -0.02em;
   color: #a9e43a;
+}
+.chrome-icon {
+  color: #a9e43a;
+  flex-shrink: 0;
 }
 .subtitle {
   margin: 0;
