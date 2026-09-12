@@ -282,6 +282,7 @@ const allSelected = computed(
 .app-header h1 {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.6rem;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   font-weight: 700;
