@@ -137,7 +137,7 @@ const allSelected = computed(
 <template>
   <header class="app-header">
     <h1>
-      <Icon icon="logos:chrome" width="28" height="28" style="vertical-align: -6px; margin-right: 0.5rem;" />
+      <Icon icon="simple-icons:googlechrome" width="28" height="28" style="color: #a9e43a; vertical-align: -6px; margin-right: 0.5rem;" />
       ChromeOS Recovery Image Downloader
     </h1>
     <p class="subtitle">
