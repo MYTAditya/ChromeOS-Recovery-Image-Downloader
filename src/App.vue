@@ -137,7 +137,12 @@ const allSelected = computed(
 <template>
   <header class="app-header">
     <h1>
-      <Icon icon="simple-icons:googlechrome" width="32" height="32" class="chrome-icon" />
+      <Icon 
+        icon="simple-icons:googlechrome" 
+        width="32" 
+        height="32" 
+        class="chrome-icon" 
+      />
       ChromeOS Recovery Image Downloader
     </h1>
     <p class="subtitle">
@@ -145,14 +150,28 @@ const allSelected = computed(
     </p>
   </header>
 
-  <section class="status" v-if="loading">
-    <div class="spinner" aria-hidden="true"></div>
+  <section 
+    v-if="loading"
+    class="status"   
+  >
+    <div
+      class="spinner" 
+      aria-hidden="true"
+    />
     <p>Loading recovery image catalog…</p>
   </section>
 
-  <section class="status error" v-else-if="loadError">
+  <section 
+    v-else-if="loadError"
+    class="status error"
+  >
     <p>{{ loadError }}</p>
-    <button class="retry-btn" @click="loadData">Retry</button>
+    <button 
+      class="retry-btn" 
+      @click="loadData"
+    >
+      Retry
+    </button>
   </section>
 
   <template v-else>
@@ -165,8 +184,19 @@ const allSelected = computed(
             v-model="selectedChannel"
             :disabled="channels.length === 0"
           >
-            <option value="" disabled>Select a channel…</option>
-            <option v-for="c in channels" :key="c" :value="c">{{ c }}</option>
+            <option 
+              value="" 
+              disabled
+            >
+              Select a channel…
+            </option>
+            <option 
+              v-for="c in channels" 
+              :key="c" 
+              :value="c"
+            >
+              {{ c }}
+            </option>
           </select>
         </div>
       </div>
@@ -179,8 +209,19 @@ const allSelected = computed(
             v-model="selectedManufacturer"
             :disabled="!selectedChannel || manufacturers.length === 0"
           >
-            <option value="" disabled>Select a manufacturer…</option>
-            <option v-for="m in manufacturers" :key="m" :value="m">{{ m }}</option>
+            <option 
+              value="" 
+              disabled
+            >
+              Select a manufacturer…
+            </option>
+            <option 
+              v-for="m in manufacturers" 
+              :key="m" 
+              :value="m"
+            >
+              {{ m }}
+            </option>
           </select>
         </div>
       </div>
@@ -193,20 +234,37 @@ const allSelected = computed(
             v-model="selectedModel"
             :disabled="!selectedManufacturer || models.length === 0"
           >
-            <option value="" disabled>Select a model…</option>
-            <option v-for="m in models" :key="m" :value="m">{{ m }}</option>
+            <option 
+              value="" 
+              disabled
+            >
+              Select a model…
+            </option>
+            <option 
+              v-for="m in models" 
+              :key="m" 
+              :value="m"
+            >
+              {{ m }}
+            </option>
           </select>
         </div>
       </div>
     </section>
 
-    <p class="hint" v-if="!allSelected">
+    <p 
+      v-if="!allSelected"
+      class="hint" 
+    >
       Choose a channel, manufacturer, and model to view the recovery image
       details.
     </p>
 
     <Transition name="reveal">
-      <section v-if="allSelected" class="details">
+      <section 
+        v-if="allSelected" 
+        class="details"
+      >
         <div class="info-grid">
           <div class="info-box">
             <span class="info-label">Channel</span>
@@ -214,17 +272,17 @@ const allSelected = computed(
           </div>
           <div class="info-box">
             <span class="info-label">Manufacturer &amp; Model</span>
-            <span class="info-value"
-              >{{ selectedRecord.manufacturer }} |
-              {{ selectedRecord.model }}</span
-            >
+            <span class="info-value">
+              {{ selectedRecord.manufacturer }} |
+              {{ selectedRecord.model }}
+            </span>
           </div>
           <div class="info-box">
             <span class="info-label">Version &amp; ChromeOS Version</span>
-            <span class="info-value"
-              >{{ selectedRecord.version }} |
-              {{ selectedRecord.chrome_version }}</span
-            >
+            <span class="info-value">
+              {{ selectedRecord.version }} |
+              {{ selectedRecord.chrome_version }}
+            </span>
           </div>
           <div class="info-box">
             <span class="info-label">File Size</span>
@@ -234,11 +292,21 @@ const allSelected = computed(
           </div>
           <div class="info-box">
             <span class="info-label">SHA-1</span>
-            <span class="info-value sha1-value" :title="selectedRecord.sha1">{{ selectedRecord.sha1 || '—' }}</span>
+            <span 
+              class="info-value sha1-value" 
+              :title="selectedRecord.sha1"
+            >
+              {{ selectedRecord.sha1 || '—' }}
+            </span>
           </div>
           <div class="info-box">
             <span class="info-label">Link</span>
-            <span class="info-value" :title="selectedRecord.url">{{ selectedRecord.url }}</span>
+            <span 
+              class="info-value" 
+              :title="selectedRecord.url"
+            >
+              {{ selectedRecord.url }}
+            </span>
           </div>
         </div>
 
@@ -248,7 +316,12 @@ const allSelected = computed(
           download
           rel="noopener noreferrer"
         >
-          <Icon icon="mdi:download" width="20" height="20" style="vertical-align: -4px; margin-right: 0.4rem;" />
+          <Icon 
+            icon="mdi:download" 
+            width="20" 
+            height="20" 
+            style="vertical-align: -4px; margin-right: 0.4rem;" 
+          />
           Download Recovery Image
         </a>
       </section>
@@ -262,15 +335,25 @@ const allSelected = computed(
       bandwidth.
     </p>
     <div class="footer-links">
-      <a :href="EXTENSION_URL" target="_blank" rel="noopener noreferrer"
-        >Official Chrome Extension Link (Chromebook Recovery Utility)</a
+      <a 
+        :href="EXTENSION_URL" 
+        target="_blank" 
+        rel="noopener noreferrer"
       >
+        Official Chrome Extension Link (Chromebook Recovery Utility)
+      </a>
       <a :href="EXTENSION_WINDOW_URL">Open Chrome Extension Window (If installed in your browser)</a>
-      <p>By
-      <a :href="DEV_URL">Mastered YT Aditya</a>.</p>
-      <a :href="REPO_URL"
-        ><img :src="GITHUB_BUTTON" alt="GitHub Badge" width="250" 
-        /></a>
+      <p>
+        By
+        <a :href="DEV_URL">Mastered YT Aditya</a>.
+      </p>
+      <a :href="REPO_URL">
+        <img 
+          :src="GITHUB_BUTTON" 
+          alt="GitHub Badge" 
+          width="250" 
+        >
+      </a>
     </div>
   </footer>
 </template>
