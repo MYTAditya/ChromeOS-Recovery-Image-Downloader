@@ -47,6 +47,7 @@ ChromeOS Recovery Image Downloader is a simple tool to download official ChromeO
 - **[Vite](https://vitejs.dev)** — build tool and dev server
 - **[Vue 3](https://vuejs.org)** — UI framework
 - **[Iconify](https://iconify.design)** (`@iconify/vue`) — icons
+- **[ESLint](https://eslint.org/)** — linting
 - **GitHub Actions** — scheduled workflow that generates the recovery image catalog
 - Deployed on **[Vercel](https://vercel.com)**
 
@@ -107,3 +108,6 @@ Made with ❤️ by [Mastered YT Aditya](https://github.com/MYTAditya).
 | [Iconify for Vue](https://iconify.design) (`@iconify/vue`) | 2021-PRESENT Vjacheslav Trushkin | MIT License |
 | [Vite](https://vitejs.dev) | 2019-present, VoidZero Inc. and Vite contributors | MIT License |
 | [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue) | 2019-present, Yuxi (Evan) You and Vite contributors | MIT License |
+| [ESLint](https://eslint.org) & [@eslint/js](https://eslint.org) | OpenJS Foundation and other contributors, &lt;www.openjsf.org&gt; | MIT License |
+| [eslint-plugin-vue](https://eslint.vuejs.org) | 2017 Toru Nagashima | MIT License |
+| [globals](https://www.npmjs.com/package/globals) | Sindre Sorhus &lt;sindresorhus@gmail.com&gt; (https://sindresorhus.com) | MIT License |
